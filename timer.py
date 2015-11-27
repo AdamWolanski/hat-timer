@@ -63,7 +63,7 @@ def timeCalculate(t1, t2, t3='00:00:00', flag=1): #flag 1 - count weekends, 0 - 
         time = timeAdd(tmp, timeParse(t3))
     else:
         tmp = timeSub(timeParse(t1), timeParse(t2))
-        time = timeSub(tmp, timeParse(t3))
+        time = timeSub(timeParse(t3), tmp)
     return time
 
 #example usage:
