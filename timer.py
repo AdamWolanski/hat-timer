@@ -31,7 +31,7 @@ def timeAdd(time1, time2): #ex t1 = '12:34:56'
     if seconds >= 60:
         minutes += 1
         seconds -= 60
-    minutes = time1.minutes + time2.minutes
+    minutes += time1.minutes + time2.minutes
     if minutes >= 60:
         hours += 1
         minutes -= 60
@@ -45,11 +45,12 @@ def timeSub(time1, time2): #ex t1 = '12:34:56'
     seconds = (time1.seconds - time2.seconds)
     if seconds < 0:
         minutes -= 1
-        seconds += 60
-    minutes = (time1.minutes - time2.minutes)
+        seconds = 60-abs(seconds)
+    minutes += (time1.minutes - time2.minutes)
     if minutes < 0:
-        hours -= 1
-        minutes += 60
+        hours += 1
+        minutes = 60-abs(minutes)
+        
     hours = (time1.hours - time2.hours)
     #hours = abs(hours)
     return Time(hours, minutes, seconds)
@@ -67,5 +68,5 @@ def timeCalculate(t1, t2, t3='00:00:00', flag=1): #flag 1 - count weekends, 0 - 
     return time
 
 #example usage:
-#t = timeCalculate('33:02:55', '31:00:15')
+#t = timeCalculate('00:02:59', '01:01:08')
 #timePrint(t)
