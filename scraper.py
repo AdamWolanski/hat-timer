@@ -11,7 +11,8 @@ import timer
 usr =getpass.getuser()
 password = getpass.getpass()
 
-browser = webdriver.Firefox()
+#browser = webdriver.Firefox()
+browser = webdriver.PhantomJS("phantomjs.exe")
 time.sleep(2)
 browser.get('hat.szczecin.tietoenator.com')
 user_elem = browser.find_element_by_id('user_')
