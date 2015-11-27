@@ -8,11 +8,14 @@ import re
 
 import timer
 
-usr =getpass.getuser()
+#usage:
+#  $ python scraper.py <args-optional>
+#  args: 1(defalut) - count weekends, 0 - don't count
+
+usr = getpass.getuser()
 password = getpass.getpass()
 
-#browser = webdriver.Firefox()
-browser = webdriver.PhantomJS("phantomjs.exe")
+browser = webdriver.Firefox()
 time.sleep(2)
 browser.get('hat.szczecin.tietoenator.com')
 user_elem = browser.find_element_by_id('user_')
@@ -45,7 +48,7 @@ def hatTimePrint(elems, args):
     if len(elems) == 5:
         if len(args) > 0:
             t = timer.timeCalculate(matchList[2], matchList[3], matchList[4], args[0])
-        else: 
+        else:
             t = timer.timeCalculate(matchList[2], matchList[3], matchList[4])
         timer.timePrint(t)
     else:
