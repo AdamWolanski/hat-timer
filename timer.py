@@ -7,12 +7,17 @@ class Time:
         self.seconds = s
 
 def timePrint(t):
-    
-    '''if self.flag == 1:
-        print "+ :"
+    minutes = ''
+    seconds = ''
+    if t.minutes < 10:
+        minutes  = '0'+str(t.minutes)
     else:
-        print "- :"'''
-    print "{}:{}:{}".format(t.hours, t.minutes, t.seconds)
+        minutes = t.minutes
+    if t.seconds < 10:
+        seconds = '0'+str(t.seconds)
+    else:
+        seconds = t.seconds 
+    print "{}:{}:{}".format(t.hours, minutes, seconds)
 
 def timeParse(t):
     return Time(int(t[0:2]),int(t[3:5]),int(t[6:8])) 
@@ -52,15 +57,15 @@ def timeSub(time1, time2): #ex t1 = '12:34:56'
 def timeCalculate(t1, t2):
     return timeSub(timeParse(t1), timeParse(t2))
 
-def timeCalculate(t1, t2, t3=Time(0,0,0), flag=1): #flag 1 - count weekends, 0 - dont count
-    if flag == 1:
+def timeCalculate(t1, t2, t3='00:00:00', flag=1): #flag 1 - count weekends, 0 - dont count 
+    if (int(flag) == 1): 
         tmp = timeSub(timeParse(t1),timeParse(t2))
-        time = timeAdd(tmp, t3)
+        time = timeAdd(tmp, timeParse(t3))
     else:
         tmp = timeSub(timeParse(t1), timeParse(t2))
-        time = timeSub(tmp, t3)
+        time = timeSub(tmp, timeParse(t3))
     return time
 
 #example usage:
-t = timeCalculate('12:34:56', '32:43:54')
-timePrint(t)
+#t = timeCalculate('33:02:55', '31:00:15')
+#timePrint(t)
