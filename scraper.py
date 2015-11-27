@@ -12,7 +12,8 @@ import timer
 #  $ python scraper.py <args-optional>
 #  args: 1(defalut) - count weekends, 0 - don't count
 
-usr = getpass.getuser()
+sys.stdout.write("User: ")
+usr = raw_input()
 password = getpass.getpass()
 
 browser = webdriver.Firefox()
