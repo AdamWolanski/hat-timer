@@ -11,7 +11,7 @@ import timer
 usr =getpass.getuser()
 password = getpass.getpass()
 
-browser = webdriver.Chrome()
+browser = webdriver.Firefox()
 time.sleep(2)
 browser.get('hat.szczecin.tietoenator.com')
 user_elem = browser.find_element_by_id('user_')
