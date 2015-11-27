@@ -8,8 +8,8 @@ import re
 
 import timer
 
-usr = 'wolaoada'#getpass.getuser()
-passs = getpass.getpass()
+usr =getpass.getuser()
+password = getpass.getpass()
 
 
 browser = webdriver.Firefox()
@@ -20,7 +20,7 @@ pass_elem = browser.find_element_by_id('pass_')
 
 user_elem.send_keys(str(usr))
 
-pass_elem.send_keys(str(passs))
+pass_elem.send_keys(str(password))
 
 pass_elem.submit()
 
@@ -43,7 +43,10 @@ def regexParse(elems):
 
 def hatTimePrint(elems, args):
     if len(elems) == 5:
-        t = timer.timeCalculate(matchList[2], matchList[3], matchList[4], args[0])
+        if len(args) > 0:
+            t = timer.timeCalculate(matchList[2], matchList[3], matchList[4], args[0])
+        else: 
+            t = timer.timeCalculate(matchList[2], matchList[3], matchList[4])
         timer.timePrint(t)
     else:
         t = timer.timeCalculate(matchList[2], matchList[3])
